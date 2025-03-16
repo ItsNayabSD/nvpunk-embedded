@@ -1,29 +1,32 @@
-# [Nvpunk](https://nvpunk.gabmus.org)
-
-
+# Nvpunk Embedded (WIP)
 ```
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⡴⠊⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠁⠀⣀⣀⣀⣀⣤⣤⣤⣤⣤⣤⡆⠀⢠⠃⢠⠀⠀⠀⣀⡀⢠⣤⣤⠀⢀⣠⣴⡾⠟⠉⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡔⠁⠀⣼⣿⠟⠛⢛⣛⣯⣽⣿⠿⠛⠁⣰⣿⢡⣿⣇⠀⣰⡿⢡⣿⣿⣧⣾⠿⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀
-⢳⣤⡀⠀⣶⣆⢀⣄⠀⠀⣼⠃⢀⣼⣿⣿⣶⡿⠿⠛⠉⢡⣶⠀⢀⣴⣿⢣⣿⢿⣿⣸⡿⢡⣿⣿⠿⣿⣿⣶⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠈⣿⣿⣦⡸⣿⡌⢿⡄⣼⠏⠈⣻⣿⠏⠉⠀⠀⠀⠀⢠⣿⣧⡾⣿⡿⢱⡿⠏⠀⣿⡿⠁⢸⡿⠁⠀⠀⠉⠻⢿⡆⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⢸⣿⡆⠺⣿⣷⠘⣿⡟⠀⣰⣿⠏⠀⠀⠀⠀⠀⠀⠈⠛⠁⠀⠙⠁⠀⠀⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀⠀⠀⠀⠈⠑⠦⣀⠀⠀⠀⠀⠀
-⠀⠀⠉⠁⠀⠈⠛⠂⠙⠀⢰⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠲⢤⣀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙
-⠀⠀⠀⠀⠀⠀⠀⠀⢠⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡤⢄⡀⠀⠀⠀⠀⠀⠀⣀⣄⡀⣀⡠⣀⠀⠀⠀⠀⠀⠀⢀⡤⢤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢹⡏⠀⠀⠀⢠⡔⢤⡄⠙⡶⠉⠉⣶⠋⢠⡔⢢⡄⠀⠀⠀⢹⡏⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                    ⠀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠈⣉⣉⢹⣆⣀⣸⣇⣀⣀⣯⣀⡀⣿⣀⣀⣸⣇⣀⣸⣍⣉⡈⠁⠀⠀⠀⠀⠀⠀⢀⣀⣀⠀
+                    ⠈⠓⠒⠉⠉⠉⢹⣇⣀⣰⡏⠀⠀⠀⢀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⠀⠀⠀⠈⢹⣆⣀⣸⠋⠉⠉⠙⠒⠊⠁
+                    ⠀⠀⠀⠀⣴⣒⡦⠤⠤⢼⡇⠀⠀⠰⡏⠀⠀⠿⠤⠤⣤⠀⢀⣀⣀⣀⣀⠀⠀⢹⠀⠀⠀⢸⡧⠤⠤⢶⣒⡦⠀⠀⠀⠀
+                    ⠀⠶⣩⠶⠒⠒⠒⠒⠒⢺⡇⠀⠀⢘⡇⠀⠀⠀⠀⠀⠹⠀⠀⠀⠀⠀⢸⣆⣠⣼⠁⠀⠀⢸⡗⠒⠒⠒⠒⠒⠶⣩⠖⠀
+                    ⠀⠻⠥⠟⢒⣒⡒⠒⠒⢺⡇⠀⠀⢨⡇⠈⠸⣇⣀⣀⣀⠀⠀⣇⠀⠀⠀⠀⠀⢸⠄⠀⠀⢸⡓⠒⠒⢒⣒⡒⠻⠬⠛⠀
+                    ⠀⠀⠀⠀⠛⠒⢋⣉⣉⣹⡇⠀⠀⠐⢧⣀⣀⣀⣀⣀⣀⣀⣀⣉⣉⣉⣿⣀⣀⡼⠀⠀⠀⢸⣏⣉⣉⠙⠒⠋⠀⠀⠀⠀
+                    ⠠⣖⣒⡤⠤⠤⠼⠇⠀⠘⠧⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⠼⠃⠀⠸⠧⠤⠤⢴⣒⣢⠄
+                    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡤⠤⠼⠇⢀⡸⢇⡀⠀⣯⠀⠀⣿⠀⢀⡸⢇⡀⠸⠧⠤⢤⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠼⢧⡀⠀⠀⠈⠑⠊⠁⣴⠳⣄⣤⠛⣦⠈⠑⠊⠁⠀⠀⢀⡼⠧⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠉⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉
 ```
 
-[Neovim](https://neovim.io) distribution for netrunners, cyberspace hackers and interstellar cowboys.
+[Neovim](https://neovim.io) distribution for Embedded developers.
 
-## Install
-
-[Visit the install page on the Nvpunk website for a complete guide](https://nvpunk.gabmus.org/docs/p02-install/).
+## Installation
+Execute the following commands to set up this distribution.
 
 ```bash
-mv ~/.config/nvim ~/.config/nvim.old
-git clone https://gitlab.com/gabmus/nvpunk ~/.config/nvim
+mv ~/.config/nvim ~/.config/nvim.old # Backup your existing nvim configuration.
+git clone https://github.com/ItsNayabSD/nvpunk-embedded.git ~/.config/nvim
 ```
 
-## Help
+Upon launching `nvim` for the first time, all plugins should automatically install. If they do not, manually install them using `nvim +NvpunkUpdate`.
 
-After installing, you can run `:h nvpunk` to view the help page.
+Discover more about this distribution [here](https://nvpunk.gabmus.org/).
+
+## Assistance
+Post-installation, use `:h nvpunk` to access the help documentation within the editor.
