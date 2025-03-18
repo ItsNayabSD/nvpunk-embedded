@@ -43,7 +43,7 @@ return {
         }
 
         if require('nvpunk.internals.cpu').is_x86_64() then
-            vim.tbl_extend('force', packages, {
+            packages = vim.tbl_extend('force', packages, {
                 'clangd',
             })
         end
