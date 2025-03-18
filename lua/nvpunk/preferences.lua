@@ -8,7 +8,7 @@ local PREFERENCES_FILE = vim.fn.expand(
 
 local DEFAULT_PREFERENCES = {
     theme = 'onedark_warmer',
-    greeter = 'punk',
+    greeter = 'embedded',
     indent_blankline_enabled = true,
     tab_style = 'slant', -- 'slant' | 'padded_slant' | 'thin' | 'thick'
     navic_enabled = true,
