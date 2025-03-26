@@ -49,6 +49,26 @@ M.set_keymaps = function()
             { '<leader>W', group = 'Whitespace' },
         }
     end)
+
+    km.nkeymap(
+        '<leader>wd',
+        function()
+            local wd = require('workspace-diagnostics')
+            local clients = vim.lsp.get_clients()
+            if #clients <= 0 then
+                vim.notify('No LSP clients attached', 'warn', {
+                    title = 'Workspace Diagnostics'
+                })
+            end
+            for _, client in ipairs(clients) do
+                wd.populate_workspace_diagnostics(
+                    client,
+                    0
+                )
+            end
+        end,
+        'Load all workspace diagnostics'
+    )
 end
 
 return M
