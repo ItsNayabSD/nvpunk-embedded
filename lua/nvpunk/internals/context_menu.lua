@@ -36,12 +36,10 @@ M.uiselect_context_menu = function(prompt, strings, funcs)
     )
 end
 
-local MODES = { 'i', 'n' }
-
 --- Clear all entries from the given menu
 ---@param menu string
 M.clear_menu = function(menu)
-    pcall(function() vim.cmd('aunmenu ' .. menu) end)
+    pcall(function() vim.cmd.aunmenu(menu) end)
 end
 
 --- Formats the label of a menu entry to avoid errors
@@ -59,17 +57,13 @@ end
 ---@param label string
 ---@param action string
 M.rclick_context_menu = function(menu, label, action)
-    for _, m in ipairs(MODES) do
-        vim.cmd(
-            m
-                .. 'menu '
-                .. menu
-                .. '.'
-                .. M.format_menu_label(label)
-                .. ' '
-                .. action
-        )
-    end
+    vim.cmd.amenu(
+            menu
+            .. '.'
+            .. M.format_menu_label(label)
+            .. ' '
+            .. action
+    )
 end
 
 --- Set up a right click submenu
@@ -126,15 +120,15 @@ M.set_lsp_rclick_menu = function()
         'NvpunkLspMenu',
         pad('LSP', M.L0_ITEM_WIDTH) .. icons.double_arrow_right,
         {
-            M.menu_item('Code Actions', '<space>ca'),
-            M.menu_item('Go to Declaration', 'gD'),
-            M.menu_item('Go to Definition', 'gdt'),
-            M.menu_item('Go to Implementation', 'gI'),
-            M.menu_item('Signature Help', '<C-k>'),
+            M.menu_item('Code actions', '<space>ca'),
+            M.menu_item('Go to declaration', 'gD'),
+            M.menu_item('Go to definition', 'gdt'),
+            M.menu_item('Go to implementation', 'gI'),
+            M.menu_item('Signature help', '<C-k>'),
             M.menu_item('Rename', '<space>rn'),
             M.menu_item('References', 'gr'),
-            M.menu_item('Expand Diagnostics', '<space>e'),
-            M.menu_item('Auto Format', '<space>f'),
+            M.menu_item('Expand diagnostics', '<space>e'),
+            M.menu_item('Auto format', '<space>f'),
         },
         M.buf_has_lsp
     )
@@ -145,9 +139,9 @@ M.set_java_rclick_menu = function()
         'NvpunkJavaMenu',
         pad('Java', M.L0_ITEM_WIDTH) .. icons.double_arrow_right,
         {
-            M.menu_item('Test Class', '<space>bjc'),
-            M.menu_item('Test Nearest Method', '<space>bjn'),
-            M.menu_item('Refresh Debugger', '<space>bjr'),
+            M.menu_item('Test class', '<space>bjc'),
+            M.menu_item('Test nearest method', '<space>bjn'),
+            M.menu_item('Refresh debugger', '<space>bjr'),
         },
         function() return vim.bo.filetype == 'java' end
     )
@@ -159,7 +153,7 @@ M.set_dap_rclick_menu = function()
         pad('Debug', M.L0_ITEM_WIDTH) .. icons.double_arrow_right,
         {
             M.menu_item('Show DAP UI', '<space>bu'),
-            M.menu_item('Toggle Breakpoint', '<space>bb'),
+            M.menu_item('Toggle breakpoint', '<space>bb'),
             M.menu_item('Continue', '<space>bc'),
             M.menu_item('Terminate', '<space>bk'),
         },
@@ -172,16 +166,16 @@ M.set_neotree_rclick_menu = function()
         'NvpunkNeoTreeMenu',
         pad('File', M.L0_ITEM_WIDTH) .. icons.double_arrow_right,
         {
-            M.menu_item('New File', '<space>fn'),
-            M.menu_item('New Folder', '<space>dn'),
+            M.menu_item('New file', '<space>fn'),
+            M.menu_item('New folder', '<space>dn'),
             M.menu_item('Rename', '<F2>'),
-            M.menu_item('Toggle Hidden', '<C-h>'),
-            M.menu_item('Split Vertically', 'i'),
-            M.menu_item('Split Horizontally', 's'),
-            M.menu_item('Open in New Tab', 't'),
-            M.menu_item('Open with System App', '<space>xo'),
-            M.menu_item('Git Add', '<space>ga'),
-            M.menu_item('Git Unstage', '<space>gu'),
+            M.menu_item('Toggle hidden', '<C-h>'),
+            M.menu_item('Split vertically', 'i'),
+            M.menu_item('Split horizontally', 's'),
+            M.menu_item('Open in new tab', 't'),
+            M.menu_item('Open with system app', '<space>xo'),
+            M.menu_item('Git add', '<space>ga'),
+            M.menu_item('Git unstage', '<space>gu'),
         },
         function() return vim.bo.filetype == 'neo-tree' end
     )
@@ -192,9 +186,9 @@ M.set_telescope_rclick_menu = function()
         'NvpunkTelescopeMenu',
         pad('Telescope', M.L0_ITEM_WIDTH) .. icons.double_arrow_right,
         {
-            M.menu_item('Find File', '<space>tf'),
-            M.menu_item('Live Grep', '<space>tg'),
-            M.menu_item('Recent Files', '<space>th'),
+            M.menu_item('Find file', '<space>tf'),
+            M.menu_item('Live grep', '<space>tg'),
+            M.menu_item('Recent files', '<space>th'),
         }
     )
 end
@@ -204,10 +198,10 @@ M.set_git_rclick_menu = function()
         'NvpunkGitMenu',
         pad('Git', M.L0_ITEM_WIDTH) .. icons.double_arrow_right,
         {
-            M.menu_item('Preview Changes', '<space>g?'),
-            M.menu_item('Prev Hunk', '<space>g['),
-            M.menu_item('Next Hunk', '<space>g]'),
-            M.menu_item('Blame Line', '<space>gb'),
+            M.menu_item('Preview changes', '<space>g?'),
+            M.menu_item('Prev hunk', '<space>g['),
+            M.menu_item('Next hunk', '<space>g]'),
+            M.menu_item('Blame line', '<space>gb'),
         },
         M.buf_is_file
     )
@@ -218,10 +212,10 @@ M.set_view_rclick_menu = function()
         'NvpunkViewMenu',
         pad('View', M.L0_ITEM_WIDTH) .. icons.double_arrow_right,
         {
-            M.menu_item('Code Outline', 'go'),
-            M.menu_item('Split Term Vertical', '<space>/i'),
-            M.menu_item('Split Term Horizontal', '<space>/s'),
-            M.menu_item('Floating Term', '<C-\\>'),
+            M.menu_item('Code outline', 'go'),
+            M.menu_item('Split term vertical', '<space>/i'),
+            M.menu_item('Split term horizontal', '<space>/s'),
+            M.menu_item('Floating term', '<C-\\>'),
         }
     )
 end
@@ -229,10 +223,10 @@ end
 M.setup_rclick_menu_autocommands = function()
     vim.api.nvim_create_autocmd({ 'BufEnter', 'LspAttach' }, {
         callback = function()
+            M.clear_menu '*'
             M.set_lsp_rclick_menu()
             M.set_dap_rclick_menu()
             M.set_java_rclick_menu()
-            -- M.set_nvimtree_rclick_menu()
             M.set_neotree_rclick_menu()
             M.set_telescope_rclick_menu()
             M.set_git_rclick_menu()
@@ -240,8 +234,6 @@ M.setup_rclick_menu_autocommands = function()
         end,
     })
 end
-
-M.clear_menu 'PopUp'
 
 M.set_keymap = function()
     require('nvpunk.internals.keymapper').nkeymap(
@@ -252,6 +244,11 @@ M.set_keymap = function()
 end
 
 M.setup = function()
+    for _, autocmd in ipairs(vim.api.nvim_get_autocmds({
+        event = 'MenuPopup'
+    })) do
+        vim.api.nvim_del_autocmd(autocmd.id)
+    end
     M.setup_rclick_menu_autocommands()
     M.set_keymap()
 end

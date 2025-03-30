@@ -5,7 +5,7 @@ local icons = require 'nvpunk.internals.icons'
 ---Set buffer keymaps for attaching language servers
 ---@param client vim.lsp.Client
 ---@param bufnr number
----@param extra_keymaps function
+---@param extra_keymaps function | nil
 M.set_lsp_keymaps = function(client, bufnr, extra_keymaps)
     local wk = require 'which-key'
     local bm = km.create_bufkeymapper(bufnr)
@@ -85,8 +85,18 @@ M.set_lsp_keymaps = function(client, bufnr, extra_keymaps)
         'Show diagnostics',
         icons.diag_hint
     )
-    bm.nkeymap('[d', vim.diagnostic.goto_prev, 'Prev diagnostic', icons.prev)
-    bm.nkeymap(']d', vim.diagnostic.goto_next, 'Next diagnostic', icons.next)
+    bm.nkeymap(
+        '[d',
+        function() vim.diagnostic.jump { count = 1, float = true } end,
+        'Prev diagnostic',
+        icons.prev
+    )
+    bm.nkeymap(
+        ']d',
+        function() vim.diagnostic.jump { count = -1, float = true } end,
+        'Next diagnostic',
+        icons.next
+    )
     -- bm.nkeymap('<leader>q', vim.diagnostic.setloclist)
     bm.nkeymap(
         '<leader>ca',
@@ -118,20 +128,24 @@ M.set_lsp_keymaps = function(client, bufnr, extra_keymaps)
         local function set_km(opts)
             bm.nkeymap(
                 '<leader>f',
-                function()
-                    vim.lsp.buf.format(opts)
-                end,
+                function() vim.lsp.buf.format(opts) end,
                 'Format',
                 icons.sparkle
             )
         end
 
-        if vim.bo.filetype == 'typescript' or vim.bo.filetype == 'javascript' then
+        if
+            vim.bo.filetype == 'typescript'
+            or vim.bo.filetype == 'javascript'
+        then
             for _, folder in ipairs(vim.lsp.buf.list_workspace_folders()) do
                 for fname, ftype in vim.fs.dir(folder) do
-                    if ftype == 'file' and (fname == 'biome.json' or fname == 'biome.jsonc') then
+                    if
+                        ftype == 'file'
+                        and (fname == 'biome.json' or fname == 'biome.jsonc')
+                    then
                         if client.name == 'biome' then
-                            set_km({ name = 'biome' })
+                            set_km { name = 'biome' }
                         end
                         return
                     end
@@ -142,7 +156,10 @@ M.set_lsp_keymaps = function(client, bufnr, extra_keymaps)
     end
 
     -- Set some keybinds conditional on server capabilities
-    if client.server_capabilities.documentFormattingProvider or client.name == 'biome' then
+    if
+        client.server_capabilities.documentFormattingProvider
+        or client.name == 'biome'
+    then
         set_fmt_keymap()
     else
         bm.nkeymap('<leader>f', '<cmd>Neoformat<cr>', 'Format', icons.sparkle)
