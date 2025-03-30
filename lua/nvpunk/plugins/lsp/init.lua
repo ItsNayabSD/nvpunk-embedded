@@ -8,7 +8,6 @@ local plugins = {
     'lspkind',
     'mason',
     'nvim_jdtls',
-    'signature',
     'trouble',
     'workspace_diagnostics',
 }
