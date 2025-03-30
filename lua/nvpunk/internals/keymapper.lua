@@ -2,6 +2,22 @@ local M = {}
 
 local keymap_opts = { noremap = true, silent = true }
 
+---runs a keymap and informs about it being deprecated
+---@param cmd function | string
+---@param new_kb string
+M.deprecated_exec = function(cmd, new_kb)
+    return function()
+        vim.notify("Deprecated keybind, use this instead: " .. new_kb, "warn", {
+            title = 'Nvpunk Keybinds'
+        })
+        if type(cmd) == 'function' then
+            cmd()
+        else
+            vim.cmd(cmd)
+        end
+    end
+end
+
 --- Create keymap
 ---@param mode 'v' | 'x' | 'i' | 'n' | 't' | 's' | ''
 ---@param kb string

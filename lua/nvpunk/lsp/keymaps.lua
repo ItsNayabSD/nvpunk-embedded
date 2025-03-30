@@ -32,7 +32,11 @@ M.set_lsp_keymaps = function(client, bufnr, extra_keymaps)
 
     -- Mappings
 
-    bm.nkeymap('gD', vim.lsp.buf.declaration, 'Declaration')
+    bm.nkeymap(
+        'gD',
+        vim.lsp.buf.declaration,
+        'Declaration'
+    )
     wk.add {
         {
             'gd',
@@ -54,8 +58,11 @@ M.set_lsp_keymaps = function(client, bufnr, extra_keymaps)
         vim.cmd 'vsplit'
         vim.lsp.buf.definition()
     end, 'Vsplit')
-    bm.nkeymap('K', vim.lsp.buf.hover)
-    bm.nkeymap('gI', vim.lsp.buf.implementation, 'Implementation')
+    bm.nkeymap(
+        'gI',
+        km.deprecated_exec(vim.lsp.buf.implementation, 'gri'),
+        'Implementation (Legacy)'
+    )
     bm.inkeymap('<C-k>', vim.lsp.buf.signature_help)
     wk.add {
         {
@@ -77,8 +84,17 @@ M.set_lsp_keymaps = function(client, bufnr, extra_keymaps)
         'List folders'
     )
     -- bm.nkeymap('<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', 'Open definition')
-    bm.nkeymap('<leader>rn', vim.lsp.buf.rename, 'Rename', icons.pencil)
-    bm.nkeymap('gr', vim.lsp.buf.references, 'References')
+    bm.nkeymap(
+        '<leader>rn',
+        km.deprecated_exec(vim.lsp.buf.rename, 'grn'),
+        'Rename (legacy)',
+        icons.pencil
+    )
+    bm.nkeymap(
+        'gr',
+        km.deprecated_exec(vim.lsp.buf.references, 'grr'),
+        'References (legacy)'
+    )
     bm.nkeymap(
         '<leader>e',
         vim.diagnostic.open_float,
@@ -100,8 +116,8 @@ M.set_lsp_keymaps = function(client, bufnr, extra_keymaps)
     -- bm.nkeymap('<leader>q', vim.diagnostic.setloclist)
     bm.nkeymap(
         '<leader>ca',
-        vim.lsp.buf.code_action,
-        'Code actions',
+        km.deprecated_exec(vim.lsp.buf.code_action, 'gra'),
+        'Code actions (legacy)',
         icons.lightning
     )
 
