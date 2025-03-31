@@ -44,7 +44,7 @@ return {
                 },
                 {
                     sign = {
-                        name = { 'Diagnostic' },
+                        namespace = { 'diagnostic*' },
                         maxwidth = 1,
                         colwidth = 1,
                         auto = false,
@@ -66,10 +66,7 @@ return {
                 DapBreakpointRejected = builtin.toggle_breakpoint,
                 DapBreakpoint = builtin.toggle_breakpoint,
                 DapBreakpointCondition = builtin.toggle_breakpoint,
-                DiagnosticSignError = builtin.diagnostic_click,
-                DiagnosticSignHint = builtin.diagnostic_click,
-                DiagnosticSignInfo = builtin.diagnostic_click,
-                DiagnosticSignWarn = builtin.diagnostic_click,
+                ['diagnostic/signs'] = builtin.diagnostic_click,
                 GitSignsTopdelete = gitsigns_click,
                 GitSignsUntracked = false,
                 GitSignsAdd = gitsigns_click,
