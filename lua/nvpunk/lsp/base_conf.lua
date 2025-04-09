@@ -1,5 +1,6 @@
 local icons = require 'nvpunk.internals.icons'
 
+---@type vim.diagnostic.Opts
 local diagnostic_conf = {
     -- inline errors
     virtual_text = true,
@@ -10,7 +11,7 @@ local diagnostic_conf = {
         focusable = false,
         style = 'minimal',
         border = require('nvpunk.preferences').get_small_window_border(),
-        source = 'always',
+        source = true,
         header = '',
         prefix = '',
     },
@@ -21,7 +22,7 @@ local diagnostic_conf = {
             [vim.diagnostic.severity.INFO] = icons.diag_info,
             [vim.diagnostic.severity.HINT] = icons.diag_hint,
         },
-        linehl = {
+        numhl = {
             [vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
             [vim.diagnostic.severity.WARN] = 'DiagnosticSignWarn',
             [vim.diagnostic.severity.INFO] = 'DiagnosticSignInfo',
