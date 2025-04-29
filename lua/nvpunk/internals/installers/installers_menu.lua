@@ -9,6 +9,9 @@ local installers_menus = {
         label = 'Java Debug',
         func = function()
             require 'nvpunk.internals.find_jdtls_java'(function(home)
+                if home == nil then
+                    return
+                end
                 vim.notify('Installing Java Debug...', vim.log.levels.INFO, {
                     title = notif_ctx,
                 })

@@ -15,6 +15,7 @@ return {
     diag_warn = '',
     bug = '',
     java = '',
+    rust = '',
     debug_breakpoint = '',
     debug_rejected = '󰅘',
     debug_stopped = '',

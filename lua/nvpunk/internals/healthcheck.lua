@@ -142,8 +142,8 @@ return function()
         },
         {
             test = function(good, bad)
-                require 'nvpunk.internals.find_jdtls_java'(function(data)
-                    if data == nil or data == '' then return bad() end
+                require('nvpunk.internals.find_jdtls_java')(function(data)
+                    if data == nil then return bad() end
                     return good()
                 end, false)
             end,

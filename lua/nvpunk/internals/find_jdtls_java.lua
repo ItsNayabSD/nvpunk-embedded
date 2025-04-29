@@ -57,6 +57,8 @@ return function(cb, notify)
             vim.log.levels.WARN,
             { title = 'nvpunk.internals.find_jdtls_java' }
         )
+    elseif jhome then
+        cb(jhome)
     end
-    if jhome then cb(jhome) end
+    cb(nil)
 end
