@@ -30,9 +30,9 @@ local JVM_DIR = '/usr/lib/jvm/'
 local TARGET_VERSION = 17
 
 local function get_viable_version()
-    local iter = vim.loop.fs_scandir(JVM_DIR)
+    local iter = vim.uv.fs_scandir(JVM_DIR)
     if iter == nil then return nil end
-    local item, type = vim.loop.fs_scandir_next(iter)
+    local item, type = vim.uv.fs_scandir_next(iter)
     while item ~= nil do
         if type == 'directory' then
             local jhome = JVM_DIR .. item
@@ -40,7 +40,7 @@ local function get_viable_version()
                 return jhome
             end
         end
-        item, type = vim.loop.fs_scandir_next(iter)
+        item, type = vim.uv.fs_scandir_next(iter)
     end
     return nil
 end

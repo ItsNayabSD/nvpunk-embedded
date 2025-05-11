@@ -1,9 +1,9 @@
 -- plugin installer and manager for LSP, DAP, formatters and more
 return {
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
     dependencies = {
         -- bridge mason and lspconfig
-        { 'williamboman/mason-lspconfig.nvim' },
+        { 'mason-org/mason-lspconfig.nvim' },
     },
     config = function()
         local icons = require 'nvpunk.internals.icons'

@@ -44,10 +44,7 @@ vim.lsp.handlers['textDocument/signatureHelp'] =
 vim.g.rustaceanvim = {
     tools = {},
     server = {
-        on_attach = function(client, bufnr)
-            require('nvpunk.lsp.keymaps').set_lsp_keymaps(client, bufnr)
-        end,
-        settings = {
+        default_settings = {
             ['rust-analyzer'] = {
                 telemetry = { enable = false },
             },

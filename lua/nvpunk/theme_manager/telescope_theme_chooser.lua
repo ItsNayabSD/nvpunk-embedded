@@ -38,7 +38,7 @@ return function()
     local previewer = T.previewers.new_buffer_previewer {
         get_buffer_by_name = function() return p end,
         define_preview = function(self, entry)
-            if vim.loop.fs_stat(p) then
+            if vim.uv.fs_stat(p) then
                 T.config.buffer_previewer_maker(
                     p,
                     self.state.bufnr,

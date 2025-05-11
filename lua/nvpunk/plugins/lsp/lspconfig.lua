@@ -5,32 +5,15 @@ return {
     dependencies = {
         -- neovim specific lua stuff
         {
-            'folke/neodev.nvim',
-            config = function()
-                require('neodev').setup {
-                    library = {
-                        enabled = true, -- when not enabled, neodev will not change any settings to the LSP server
-                        -- these settings will be used for your Neovim config directory
-                        runtime = true, -- runtime path
-                        types = true, -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
-                        plugins = true, -- installed opt or start plugins in packpath
-                        -- you can also specify the list of plugins to make available as a workspace library
-                        -- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
-                    },
-                    setup_jsonls = true, -- configures jsonls to provide completion for project specific .luarc.json files
-                    -- for your Neovim config directory, the config.library settings will be used as is
-                    -- for plugin directories (root_dirs having a /lua directory), config.library.plugins will be disabled
-                    -- for any other directory, config.library.enabled will be set to false
-                    override = function(root_dir, options) end,
-                    -- With lspconfig, Neodev will automatically setup your lua-language-server
-                    -- If you disable this, then you have to set {before_init=require("neodev.lsp").before_init}
-                    -- in your lsp start options
-                    lspconfig = true,
-                    -- much faster, but needs a recent built of lua-language-server
-                    -- needs lua-language-server >= 3.6.0
-                    pathStrict = true,
-                }
-            end,
+            'folke/lazydev.nvim',
+            ft = 'lua', -- only load on lua files
+            opts = {
+                library = {
+                    -- See the configuration section for more details
+                    -- Load luvit types when the `vim.uv` word is found
+                    { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+                },
+            },
         },
     },
     config = function()
@@ -42,24 +25,22 @@ return {
             'vimls',
         }
 
-        if require('nvpunk.internals.cpu').is_x86_64() then
-            vim.tbl_extend('force', packages, {
-                'clangd',
-            })
+        for ls, config in ipairs {
+            -- default for all language servers
+            ['*'] = require('nvpunk.lsp.langs.default').default_opts,
+            ['pyright'] = require 'nvpunk.lsp.langs.pyright',
+            ['lua_ls'] = require 'nvpunk.lsp.langs.lua_ls',
+            ['jdtls'] = {}, -- dummy, runs with filetype
+            ['rust_analyzer'] = {}, -- dummy, use rustacean
+            ['ltex'] = require 'nvpunk.lsp.langs.ltex',
+            ['pylsp'] = require 'nvpunk.lsp.langs.pylsp',
+        } do
+            vim.lsp.config(ls, config)
         end
 
+        require('nvpunk.lsp.langs.default').setup_on_attach_autocmd()
         require('mason-lspconfig').setup {
             ensure_installed = packages,
         }
-        require('mason-lspconfig').setup_handlers {
-            require('nvpunk.lsp.langs.default').setup,
-            ['pyright'] = require 'nvpunk.lsp.langs.pyright',
-            ['lua_ls'] = require 'nvpunk.lsp.langs.lua_ls',
-            ['jdtls'] = function() end, -- dummy, runs with filetype
-            ['rust_analyzer'] = function() end, -- dummy, use rustacean
-            ['ltex'] = require 'nvpunk.lsp.langs.ltex',
-            ['pylsp'] = require 'nvpunk.lsp.langs.pylsp',
-        }
-        require('nvpunk.lsp.langs.default').setup 'blueprint_ls'
     end,
 }
