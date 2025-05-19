@@ -1,4 +1,4 @@
-return require('nvpunk.lsp.langs.default').add_to_default {
+return {
     settings = {
         Lua = {
             diagnostics = {

@@ -1,1 +1,1 @@
-require'nvpunk.lsp.jdtls_conf'.setup()
+require('nvpunk.lsp.jdtls_conf').setup()

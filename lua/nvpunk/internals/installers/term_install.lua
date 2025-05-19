@@ -9,21 +9,18 @@ return function(cmd, reinstall, cb)
     vim.cmd 'new'
     local buf = vim.api.nvim_get_current_buf()
     local win = vim.api.nvim_get_current_win()
-    vim.fn.termopen(
-        cmd,
-        {
-            env = {
-                NVPUNK_REINSTALL = env_reinstall
-            },
-            on_exit = function(_, ret, _)
-                if ret == 0 then
-                    -- only close buf+win on success
-                    vim.api.nvim_buf_delete(buf, {})
-                    vim.api.nvim_win_close(win, false)
-                end
-                if cb ~= nil then vim.schedule(function() cb(ret == 0) end) end
+    vim.fn.termopen(cmd, {
+        env = {
+            NVPUNK_REINSTALL = env_reinstall,
+        },
+        on_exit = function(_, ret, _)
+            if ret == 0 then
+                -- only close buf+win on success
+                vim.api.nvim_buf_delete(buf, {})
+                vim.api.nvim_win_close(win, false)
             end
-        }
-    )
+            if cb ~= nil then vim.schedule(function() cb(ret == 0) end) end
+        end,
+    })
     vim.schedule(function() vim.cmd 'norm G' end)
 end

@@ -45,12 +45,20 @@ return {
                 require('nvpunk.internals.user_conf').SNIPPETS_DIR,
             },
         }
-        luasnip.add_snippets("all", {
-            luasnip.snippet("dateiso", {
-                luasnip.function_node(function()
-                    return vim.fn.trim((vim.system({'date', '-Iseconds'}, {text = true}):wait()).stdout)
-                end)
-            })
+        luasnip.add_snippets('all', {
+            luasnip.snippet('dateiso', {
+                luasnip.function_node(
+                    function()
+                        return vim.fn.trim(
+                            (vim.system(
+                                { 'date', '-Iseconds' },
+                                { text = true }
+                            )
+                                :wait()).stdout
+                        )
+                    end
+                ),
+            }),
         })
 
         cmp.setup {

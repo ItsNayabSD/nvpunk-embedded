@@ -229,9 +229,7 @@ M.set_filetree_position = function(val)
 end
 
 ---@return 'left' | 'right'
-M.get_filetree_position = function()
-    return load_conf().filetree_position
-end
+M.get_filetree_position = function() return load_conf().filetree_position end
 
 local BORDER_SELECT_OPTS = {
     { label = 'Padded', value = 'solid' },
@@ -418,10 +416,15 @@ local preferences_menus = {
                     end,
                 },
                 {
-                    label = icons.filetree .. '  Move filetree to the ' .. (filetree_position == 'left' and 'right' or 'left'),
+                    label = icons.filetree
+                        .. '  Move filetree to the '
+                        .. (filetree_position == 'left' and 'right' or 'left'),
                     func = function()
-                        M.set_filetree_position(M.get_filetree_position() == 'left' and 'right' or 'left')
-                        vim.notify('Filetree position changed, restart Nvpunk to apply these changes')
+                        M.set_filetree_position(
+                            M.get_filetree_position() == 'left' and 'right'
+                                or 'left'
+                        )
+                        vim.notify 'Filetree position changed, restart Nvpunk to apply these changes'
                     end,
                 },
             }, {

@@ -57,13 +57,7 @@ end
 ---@param label string
 ---@param action string
 M.rclick_context_menu = function(menu, label, action)
-    vim.cmd.amenu(
-            menu
-            .. '.'
-            .. M.format_menu_label(label)
-            .. ' '
-            .. action
-    )
+    vim.cmd.amenu(menu .. '.' .. M.format_menu_label(label) .. ' ' .. action)
 end
 
 --- Set up a right click submenu
@@ -244,9 +238,11 @@ M.set_keymap = function()
 end
 
 M.setup = function()
-    for _, autocmd in ipairs(vim.api.nvim_get_autocmds({
-        event = 'MenuPopup'
-    })) do
+    for _, autocmd in
+        ipairs(vim.api.nvim_get_autocmds {
+            event = 'MenuPopup',
+        })
+    do
         vim.api.nvim_del_autocmd(autocmd.id)
     end
     M.setup_rclick_menu_autocommands()

@@ -123,5 +123,5 @@ return {
     telescope_caret = '',
     terminal = '',
     lightning = '󱐋',
-    language = '󰗊'
+    language = '󰗊',
 }

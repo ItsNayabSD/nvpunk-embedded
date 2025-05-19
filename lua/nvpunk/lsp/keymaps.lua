@@ -32,11 +32,7 @@ M.set_lsp_keymaps = function(client, bufnr, extra_keymaps)
 
     -- Mappings
 
-    bm.nkeymap(
-        'gD',
-        vim.lsp.buf.declaration,
-        'Declaration'
-    )
+    bm.nkeymap('gD', vim.lsp.buf.declaration, 'Declaration')
     wk.add {
         {
             'gd',

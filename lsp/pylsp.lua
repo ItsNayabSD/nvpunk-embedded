@@ -1,12 +1,9 @@
-return require('nvpunk.lsp.langs.default').add_to_default {
+return {
     settings = {
         pylsp = {
             plugins = {
                 rope = {
                     extensionModules = { 'gi' },
-                },
-                jedi = {
-                    extra_paths = {},
                 },
             },
         },

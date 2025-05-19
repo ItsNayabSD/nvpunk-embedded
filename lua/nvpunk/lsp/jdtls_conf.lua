@@ -178,9 +178,7 @@ end
 
 M.setup = function()
     require 'nvpunk.internals.find_jdtls_java'(function(home)
-        if home == nil then
-            return
-        end
+        if home == nil then return end
         java_exec = (home .. '/bin/java') or java_exec
         java_home = home
         M.start_jdtls()

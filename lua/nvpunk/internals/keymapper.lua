@@ -7,8 +7,8 @@ local keymap_opts = { noremap = true, silent = true }
 ---@param new_kb string
 M.deprecated_exec = function(cmd, new_kb)
     return function()
-        vim.notify("Deprecated keybind, use this instead: " .. new_kb, "warn", {
-            title = 'Nvpunk Keybinds'
+        vim.notify('Deprecated keybind, use this instead: ' .. new_kb, 'warn', {
+            title = 'Nvpunk Keybinds',
         })
         if type(cmd) == 'function' then
             cmd()
@@ -27,19 +27,23 @@ end
 M.keymap = function(mode, kb, cmd, desc, icon)
     if icon ~= nil then
         -- if importing which-key fails, still set the keymap
-        if not pcall(function()
-                require('which-key').add {
-                    {
-                        kb,
-                        cmd,
-                        mode = mode,
-                        desc = desc,
-                        icon = icon,
-                        noremap = keymap_opts.noremap,
-                        silent = keymap_opts.silent,
-                    },
-                }
-            end) then
+        if
+            not pcall(
+                function()
+                    require('which-key').add {
+                        {
+                            kb,
+                            cmd,
+                            mode = mode,
+                            desc = desc,
+                            icon = icon,
+                            noremap = keymap_opts.noremap,
+                            silent = keymap_opts.silent,
+                        },
+                    }
+                end
+            )
+        then
             M.keymap(mode, kb, cmd, desc)
         end
     else
@@ -111,20 +115,24 @@ M.create_bufkeymapper = function(bufnr)
     bm.keymap = function(mode, kb, cmd, desc, icon)
         if icon ~= nil then
             -- if importing which-key fails, still set the keymap
-            if not pcall(function()
-                    require('which-key').add {
-                        {
-                            kb,
-                            cmd,
-                            mode = mode,
-                            desc = desc,
-                            icon = icon,
-                            buffer = bufnr,
-                            noremap = buf_km_opts.noremap,
-                            silent = buf_km_opts.silent,
-                        },
-                    }
-                end) then
+            if
+                not pcall(
+                    function()
+                        require('which-key').add {
+                            {
+                                kb,
+                                cmd,
+                                mode = mode,
+                                desc = desc,
+                                icon = icon,
+                                buffer = bufnr,
+                                noremap = buf_km_opts.noremap,
+                                silent = buf_km_opts.silent,
+                            },
+                        }
+                    end
+                )
+            then
                 bm.keymap(mode, kb, cmd, desc)
             end
         else

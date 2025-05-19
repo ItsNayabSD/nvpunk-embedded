@@ -2,7 +2,9 @@
 return {
     'echasnovski/mini.nvim',
     version = false,
-    config = function() require('mini.ai').setup({
-        silent = true,
-    }) end,
+    config = function()
+        require('mini.ai').setup {
+            silent = true,
+        }
+    end,
 }
