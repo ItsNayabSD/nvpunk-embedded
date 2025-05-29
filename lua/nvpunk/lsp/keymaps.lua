@@ -99,13 +99,13 @@ M.set_lsp_keymaps = function(client, bufnr, extra_keymaps)
     )
     bm.nkeymap(
         '[d',
-        function() vim.diagnostic.jump { count = 1, float = true } end,
+        function() vim.diagnostic.jump { count = -1, float = true } end,
         'Prev diagnostic',
         icons.prev
     )
     bm.nkeymap(
         ']d',
-        function() vim.diagnostic.jump { count = -1, float = true } end,
+        function() vim.diagnostic.jump { count = 1, float = true } end,
         'Next diagnostic',
         icons.next
     )
