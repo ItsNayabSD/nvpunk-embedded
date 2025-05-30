@@ -24,7 +24,7 @@ M.user_plugins = function()
         if
             type(res) == 'table'
             and not vim.tbl_isempty(res)
-            and vim.tbl_islist(res)
+            and vim.islist(res)
             and type(res[1]) == 'table'
         then
             return res
