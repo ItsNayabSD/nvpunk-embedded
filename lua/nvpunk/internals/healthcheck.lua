@@ -149,8 +149,8 @@ return function()
             end,
             icon = icons.java,
             text_obj = NuiText '',
-            label = '[java17] Java 17+',
-            help = 'nvpunk-deps-java17',
+            label = '[java21] Java 21+',
+            help = 'nvpunk-deps-java21',
         },
     }
 

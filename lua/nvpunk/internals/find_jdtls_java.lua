@@ -27,7 +27,7 @@ local function get_version(java_exec)
 end
 
 local JVM_DIR = '/usr/lib/jvm/'
-local TARGET_VERSION = 17
+local TARGET_VERSION = 21
 
 local function get_viable_version()
     local iter = vim.uv.fs_scandir(JVM_DIR)
