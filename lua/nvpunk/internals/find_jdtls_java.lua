@@ -36,7 +36,8 @@ local function get_viable_version()
     while item ~= nil do
         if type == 'directory' then
             local jhome = JVM_DIR .. item
-            if get_version(jhome .. '/bin/java') == TARGET_VERSION then
+            local version = get_version(jhome .. '/bin/java')
+            if version >= TARGET_VERSION then
                 return jhome
             end
         end
@@ -49,8 +50,8 @@ end
 ---@param cb function[string]
 ---@param notify? boolean
 return function(cb, notify)
-    local jhome = get_viable_version()
     if notify == nil then notify = true end
+    local jhome = get_viable_version()
     if jhome == nil and notify then
         vim.notify(
             'Java version 17 not found',
@@ -59,6 +60,7 @@ return function(cb, notify)
         )
     elseif jhome then
         cb(jhome)
+        return
     end
     cb(nil)
 end
