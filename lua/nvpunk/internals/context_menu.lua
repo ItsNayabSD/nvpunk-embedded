@@ -112,7 +112,7 @@ M.L0_ITEM_WIDTH = 12
 M.set_lsp_rclick_menu = function()
     M.set_rclick_submenu(
         'NvpunkLspMenu',
-        pad('LSP', M.L0_ITEM_WIDTH) .. icons.double_arrow_right,
+        pad('LSP', M.L0_ITEM_WIDTH) .. icons.chevron_right,
         {
             M.menu_item('Code actions', 'gra'),
             M.menu_item('Go to declaration', 'gD'),
@@ -131,7 +131,7 @@ end
 M.set_java_rclick_menu = function()
     M.set_rclick_submenu(
         'NvpunkJavaMenu',
-        pad('Java', M.L0_ITEM_WIDTH) .. icons.double_arrow_right,
+        pad('Java', M.L0_ITEM_WIDTH) .. icons.chevron_right,
         {
             M.menu_item('Test class', '<space>bjc'),
             M.menu_item('Test nearest method', '<space>bjn'),
@@ -144,7 +144,7 @@ end
 M.set_dap_rclick_menu = function()
     M.set_rclick_submenu(
         'NvpunkDapMenu',
-        pad('Debug', M.L0_ITEM_WIDTH) .. icons.double_arrow_right,
+        pad('Debug', M.L0_ITEM_WIDTH) .. icons.chevron_right,
         {
             M.menu_item('Show DAP UI', '<space>bu'),
             M.menu_item('Toggle breakpoint', '<space>bb'),
@@ -158,7 +158,7 @@ end
 M.set_neotree_rclick_menu = function()
     M.set_rclick_submenu(
         'NvpunkNeoTreeMenu',
-        pad('File', M.L0_ITEM_WIDTH) .. icons.double_arrow_right,
+        pad('File', M.L0_ITEM_WIDTH) .. icons.chevron_right,
         {
             M.menu_item('New file', '<space>fn'),
             M.menu_item('New folder', '<space>dn'),
@@ -178,7 +178,7 @@ end
 M.set_telescope_rclick_menu = function()
     M.set_rclick_submenu(
         'NvpunkTelescopeMenu',
-        pad('Telescope', M.L0_ITEM_WIDTH) .. icons.double_arrow_right,
+        pad('Telescope', M.L0_ITEM_WIDTH) .. icons.chevron_right,
         {
             M.menu_item('Find file', '<space>tf'),
             M.menu_item('Live grep', '<space>tg'),
@@ -190,7 +190,7 @@ end
 M.set_git_rclick_menu = function()
     M.set_rclick_submenu(
         'NvpunkGitMenu',
-        pad('Git', M.L0_ITEM_WIDTH) .. icons.double_arrow_right,
+        pad('Git', M.L0_ITEM_WIDTH) .. icons.chevron_right,
         {
             M.menu_item('Preview changes', '<space>g?'),
             M.menu_item('Prev hunk', '<space>g['),
@@ -204,7 +204,7 @@ end
 M.set_view_rclick_menu = function()
     M.set_rclick_submenu(
         'NvpunkViewMenu',
-        pad('View', M.L0_ITEM_WIDTH) .. icons.double_arrow_right,
+        pad('View', M.L0_ITEM_WIDTH) .. icons.chevron_right,
         {
             M.menu_item('Code outline', 'go'),
             M.menu_item('Split term vertical', '<space>/i'),
