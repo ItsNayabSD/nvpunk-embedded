@@ -16,4 +16,6 @@ end
 
 M.lsp_references = function() require('telescope.builtin').lsp_references() end
 
+M.resume = function() require('telescope.builtin').resume() end
+
 return M

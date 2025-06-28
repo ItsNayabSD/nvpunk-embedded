@@ -27,6 +27,13 @@ return {
     end,
     keys = {
         {
+            '<leader>tt',
+            function()
+                require('nvpunk.internals.telescope_pickers').resume()
+            end,
+            desc = 'Last search',
+        },
+        {
             '<leader>tf',
             function()
                 require('nvpunk.internals.telescope_pickers').find_files()
