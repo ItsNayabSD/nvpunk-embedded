@@ -59,7 +59,22 @@ M.set_lsp_keymaps = function(client, bufnr, extra_keymaps)
         km.deprecated_exec(vim.lsp.buf.implementation, 'gri'),
         'Implementation (Legacy)'
     )
-    bm.inkeymap('<C-k>', vim.lsp.buf.signature_help)
+    bm.nkeymap(
+        'K',
+        function()
+            vim.lsp.buf.hover {
+                border = require('nvpunk.preferences').get_small_window_border(),
+            }
+        end
+    )
+    bm.inkeymap(
+        '<C-k>',
+        function()
+            vim.lsp.buf.signature_help {
+                border = require('nvpunk.preferences').get_small_window_border(),
+            }
+        end
+    )
     wk.add {
         {
             '<leader>w',

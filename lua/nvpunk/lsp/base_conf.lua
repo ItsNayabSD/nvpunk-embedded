@@ -32,15 +32,6 @@ local diagnostic_conf = {
 }
 vim.diagnostic.config(diagnostic_conf)
 
-vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = require('nvpunk.preferences').get_small_window_border(),
-})
-
-vim.lsp.handlers['textDocument/signatureHelp'] =
-    vim.lsp.with(vim.lsp.handlers.signature_help, {
-        border = require('nvpunk.preferences').get_small_window_border(),
-    })
-
 vim.g.rustaceanvim = {
     tools = {},
     server = {
