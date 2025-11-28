@@ -23,6 +23,7 @@ return {
             'html',
             'lua_ls',
             'vimls',
+            'clangd',
         }
 
         vim.lsp.config('*', require('nvpunk.lsp.default_conf').default_opts)
