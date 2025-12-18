@@ -21,6 +21,16 @@ return {
                         vim.bo[buf_number].buftype
                     )
                 end,
+                close_command = function()
+                    if vim.fn.tabpagenr('$') > 1 then
+                        vim.cmd('tabclose')
+                    end
+                end,
+                right_mouse_command = function()
+                    if vim.fn.tabpagenr('$') > 1 then
+                        vim.cmd('tabclose')
+                    end
+                end,
             },
         }
     end,
