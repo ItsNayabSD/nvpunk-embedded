@@ -31,6 +31,12 @@ M.set_keymaps = function()
     km.nkeymap('<A-Down>', 'gj')
     km.nkeymap('<A-Up>', 'gk')
 
+    -- Tab management
+    km.nkeymap('<C-t>', '<cmd>tabnew<cr>', 'New tab')
+    km.nkeymap('<leader>tn', '<cmd>tabnew<cr>', 'New tab')
+    km.nkeymap('<leader>tc', '<cmd>tabclose<cr>', 'Close tab')
+    km.nkeymap('<leader>to', '<cmd>tabonly<cr>', 'Close other tabs')
+
     -- Terminal splitter
     km.nkeymap(
         '<leader>/s',
