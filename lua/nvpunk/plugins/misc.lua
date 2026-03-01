@@ -34,8 +34,11 @@ return {
                     underline = true,
                 },
             },
-            input = { enabled = false },
-            picker = { enabled = false },
+            input = { enabled = true, },
+            picker = {
+                enabled = true,
+                ui_select = true,
+            },
             notifier = {
                 enabled = true,
                 style = 'compact',

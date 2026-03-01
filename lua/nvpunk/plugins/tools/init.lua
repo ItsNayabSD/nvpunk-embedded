@@ -3,7 +3,6 @@ local plugins = {
     'notify',
     'telescope',
     'toggleterm',
-    'dressing',
     'diffview',
 }
 
