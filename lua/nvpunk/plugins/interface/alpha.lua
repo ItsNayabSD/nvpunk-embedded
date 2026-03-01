@@ -88,12 +88,12 @@ return {
             return '#'
                 .. vim.trim(
                     vim.split(
-                        vim.api.nvim_exec(
+                        vim.api.nvim_exec2(
                             '!git -C "'
                                 .. vim.fn.stdpath 'config'
                                 .. '" describe --always',
-                            true
-                        ),
+                            { output = true }
+                        ).output,
                         '\r'
                     )[2]
                 )

@@ -26,7 +26,7 @@ return {
     keys = {
         {
             '<leader>T',
-            '<cmd>Trouble diagnostics toggle<cr>',
+            '<cmd>Trouble diagnostics toggle focus=true<cr>',
             mode = 'n',
             desc = 'Trouble',
         },

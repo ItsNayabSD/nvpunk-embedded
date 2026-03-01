@@ -1,6 +1,7 @@
 local PFX = 'nvpunk.plugins.lsp.'
 local plugins = {
     'lspconfig',
+    'lazydev',
     'aerial',
     'cmp',
     'fidget',

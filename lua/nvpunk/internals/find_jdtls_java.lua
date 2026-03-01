@@ -1,5 +1,3 @@
-local Job = require 'plenary.job'
-
 --- Get version of given java executable
 ---@param java_exec string valid java exectuable path
 ---@return number

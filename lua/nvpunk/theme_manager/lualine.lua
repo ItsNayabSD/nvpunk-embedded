@@ -30,9 +30,9 @@ local diagnostics_widget = {
     },
     on_click = function(_num, btn, _mods)
         if btn == 'l' then
-            vim.diagnostic.goto_next()
+            vim.diagnostic.jump { count = 1, float = true }
         elseif btn == 'r' then
-            vim.diagnostic.goto_prev()
+            vim.diagnostic.jump { count = -1, float = true }
         end
     end,
 }

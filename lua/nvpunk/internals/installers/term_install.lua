@@ -9,7 +9,8 @@ return function(cmd, reinstall, cb)
     vim.cmd 'new'
     local buf = vim.api.nvim_get_current_buf()
     local win = vim.api.nvim_get_current_win()
-    vim.fn.termopen(cmd, {
+    vim.fn.jobstart(cmd, {
+        term = true,
         env = {
             NVPUNK_REINSTALL = env_reinstall,
         },
