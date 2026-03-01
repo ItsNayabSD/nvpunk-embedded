@@ -11,6 +11,7 @@ local plugins = {
     'nvim_jdtls',
     'trouble',
     'workspace_diagnostics',
+    'roslyn',
 }
 
 return vim.tbl_map(function(plugin) return require(PFX .. plugin) end, plugins)
