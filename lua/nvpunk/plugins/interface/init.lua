@@ -3,7 +3,7 @@ local plugins = {
     'devicons',
     'whichkey',
     'nui',
-    'treesitter',
+    'tree_sitter_manager',
     'alpha',
     'bqf',
     'bufferline',
