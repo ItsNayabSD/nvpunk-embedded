@@ -2,12 +2,6 @@
 return {
     'numToStr/Comment.nvim',
     lazy = true,
-    init = function()
-        require('which-key').add {
-            { 'gc', mode = { 'n' }, group = 'Comment line' },
-            { 'gb', mode = { 'n' }, group = 'Comment block' },
-        }
-    end,
     config = function()
         require('Comment').setup {
             padding = true,
