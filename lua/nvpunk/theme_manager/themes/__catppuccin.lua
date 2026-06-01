@@ -68,9 +68,10 @@ return function(style)
             navic = { enabled = true, custom_bg = 'NONE' },
             overseer = false,
             aerial = true,
+            lualine = true,
         },
     }
     vim.cmd 'colorscheme catppuccin'
     vim.cmd('Catppuccin ' .. style)
-    reload 'nvpunk.theme_manager.lualine' 'catppuccin'
+    reload 'nvpunk.theme_manager.lualine' 'auto'
 end
