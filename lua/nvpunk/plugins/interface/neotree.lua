@@ -229,7 +229,7 @@ return {
                         ['<leader>..'] = 'navigate_up',
                         ['<leader>cd'] = 'set_root',
                         ['<c-h>'] = 'toggle_hidden',
-                        ['/'] = 'fuzzy_finder',
+                        ['<c-f>'] = 'fuzzy_finder',
                         -- ['D'] = 'fuzzy_finder_directory',
                         -- ['f'] = 'filter_on_submit',
                         -- ['<c-x>'] = 'clear_filter',
