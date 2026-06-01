@@ -6,6 +6,10 @@ M.default_opts = {
     settings = {
         telemetry = { enable = false },
     },
+    flags = {
+        allow_incremental_sync = false,
+        debounce_text_changes = 300,
+    }
 }
 M.add_to_default = function(opts)
     return vim.tbl_deep_extend('force', M.default_opts, opts)
